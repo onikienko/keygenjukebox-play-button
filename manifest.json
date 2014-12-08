@@ -1,0 +1,31 @@
+{
+    "name": "keygenjukebox play button",
+    "description": "Just click to play awesome 8-bit chiptune music",
+    "version": "0.1",
+    "manifest_version": 2,
+
+    "minimum_chrome_version": "25",
+    "icons": {
+        "16": "img/ext_icons/16.png",
+        "48": "img/ext_icons/48.png",
+        "128": "img/ext_icons/128.png"
+    },
+
+    "browser_action": {
+        "default_icon": {
+            "19": "img/ext_icons/19.png",
+            "38": "img/ext_icons/38.png"
+        },
+        "default_title": "Click to play keygenjukebox.com"
+    },
+
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": true
+    },
+
+    "permissions": [
+        "http://keygenjukebox.com/",
+        "http://xspfy.com/"
+    ]
+}
