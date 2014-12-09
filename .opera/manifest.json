@@ -4,7 +4,11 @@
     "version": "0.1",
     "manifest_version": 2,
 
-    "minimum_chrome_version": "25",
+    "developer": { 
+		"name": "Michael Onikienko",
+		"url": "http://onikienko.pp.ua" 
+	},
+
     "icons": {
         "16": "img/ext_icons/16.png",
         "48": "img/ext_icons/48.png",

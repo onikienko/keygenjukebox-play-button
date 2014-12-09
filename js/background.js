@@ -1,22 +1,7 @@
 (function () {
-    var playlist = (function () {
-            if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 2 > parseInt(localStorage.playlist_date_check, 10))) {
-                getPlaylistInJSON(function () {
-
-                });
-            }
-            return localStorage.playlist ? JSON.parse(localStorage.playlist) : [];
-        })(),
+    var playlist = localStorage.playlist ? JSON.parse(localStorage.playlist) : [],
         is_playing = false,
         audio = new Audio();
-
-    function checkPlaylist() {
-        if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 2 > parseInt(localStorage.playlist_date_check, 10))) {
-            getPlaylistInJSON(function () {
-
-            });
-        }
-    }
 
     function getPlaylistInJSON(cb) {
         var xhr = new XMLHttpRequest(),
@@ -33,25 +18,26 @@
                         localStorage.playlist_date_check = Date.now();
                         localStorage.playlist = JSON.stringify(playlist);
                     }
-                    return playlist;
+                    cb && cb();
                 }
             }
         };
         xhr.send();
     }
 
+    function checkPlaylist(cb) {
+        if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 2 > parseInt(localStorage.playlist_date_check, 10))) {
+            getPlaylistInJSON(function () {
+                cb && cb();
+            });
+        } else {
+            cb && cb();
+        }
+    }
+
     function shufflePlaylist() {
         for (var j, x, i = playlist.length; i; j = Math.floor(Math.random() * i), x = playlist[--i], playlist[i] = playlist[j], playlist[j] = x);
     }
-
-    chrome.runtime.onInstalled.addListener(function (details) {
-        switch (details) {
-            case 'installed':
-                getPlaylistInJSON();
-                break;
-        }
-
-    });
 
     chrome.browserAction.onClicked.addListener(function () {
         var track_no = 0;
@@ -59,23 +45,29 @@
         function play() {
             audio.src = playlist[track_no].location;
             audio.play();
-            chrome.browserAction.setTitle({title: playlist[track_no].title})
+            chrome.browserAction.setTitle({title: playlist[track_no].title});
         }
 
         if (!is_playing) {
-            shufflePlaylist();
-            play();
-            audio.addEventListener('ended', function () {
-                if (track_no < playlist.length) {
-                    ++track_no;
-                    play();
-                }
-            });
-            is_playing = true;
+            chrome.browserAction.setIcon({path: 'img/ext_icons/19.png'});
+            checkPlaylist(function () {
+                shufflePlaylist();
+                play();
+                audio.addEventListener('ended', function () {
+                    if (track_no < playlist.length) {
+                        ++track_no;
+                        play();
+                    }
+                });
+                is_playing = true;
+            })
         } else {
+            chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
+            chrome.browserAction.setTitle({title: 'Click to play keygenjukebox.com'});
             audio.pause();
             is_playing = false;
         }
     });
 
+    checkPlaylist();
 })();
