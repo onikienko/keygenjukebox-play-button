@@ -6,6 +6,5 @@ Chrome and Opera Extension for playing awesome chiptune from keygenjukebox.com
 
 Used [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
 
-
 - **[Chrome](https://chrome.google.com/webstore/detail/keygenjukebox-play-button/olephdnjkkjiidgifanfiimkbbcaogid)**
-- **Opera - on moderation**
+- **[Opera](https://addons.opera.com/ru/extensions/details/keygenjukebox-play-button/?display=en)**
