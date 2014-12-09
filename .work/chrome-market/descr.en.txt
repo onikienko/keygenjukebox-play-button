@@ -3,3 +3,5 @@ It's all.
 
 This extension just streams music from keygenjukebox (collection of 8-bit chiptune).
 Music is absolutely free and legal. Go to keygenjukebox.com for more details.
+
+Source code https://github.com/onikienko/keygenjukebox-play-button

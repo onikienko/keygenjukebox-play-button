@@ -3,3 +3,5 @@
 
 Расширение просто проигрывает музыку с keygenjukebox (большой колекции 8-битной музыки).
 Весь контент абсолютно бесплатен и легален. Посети keygenjukebox.com, чтоб получить больше информации.
+
+Source code https://github.com/onikienko/keygenjukebox-play-button
