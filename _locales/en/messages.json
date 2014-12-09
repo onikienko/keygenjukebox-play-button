@@ -1,0 +1,15 @@
+{
+    "extName": {
+        "message": "keygenjukebox play button",
+        "description": "do not translate extension name"
+    },
+    "extDescr": {
+        "message": "Just click to play awesome 8-bit chiptune music",
+        "description": "extension description"
+    },
+
+    "p_defaultTitle": {
+        "message": "Click to play keygenjukebox.com",
+        "description": "Default title on extension button (popup)"
+    }
+}

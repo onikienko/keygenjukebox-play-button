@@ -1,0 +1,15 @@
+{
+    "extName": {
+        "message": "keygenjukebox play button",
+        "description": "do not translate extension name"
+    },
+    "extDescr": {
+        "message": "Просто клацни щоб слухати 8-бітний чіптюн з keygenjukebox.com",
+        "description": "extension description"
+    },
+
+    "p_defaultTitle": {
+        "message": "Клацни щоб почати відтворення",
+        "description": "Default title on extension button (popup)"
+    }
+}

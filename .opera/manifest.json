@@ -3,6 +3,7 @@
     "description": "Just click to play awesome 8-bit chiptune music",
     "version": "0.1",
     "manifest_version": 2,
+    "default_locale": "en",
 
     "developer": { 
 		"name": "Michael Onikienko",

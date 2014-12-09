@@ -63,7 +63,7 @@
             })
         } else {
             chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
-            chrome.browserAction.setTitle({title: 'Click to play keygenjukebox.com'});
+            chrome.browserAction.setTitle({title: chrome.i18n.getMessage('p_defaultTitle')});
             audio.pause();
             is_playing = false;
         }
