@@ -1,2 +1,4 @@
+1.0 (09.12.2014 23:07)
+	Check playlist every 7 days
 0.1 (09.12.2014 14:35)
 	First release

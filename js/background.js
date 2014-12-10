@@ -26,7 +26,7 @@
     }
 
     function checkPlaylist(cb) {
-        if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 2 > parseInt(localStorage.playlist_date_check, 10))) {
+        if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 7 > parseInt(localStorage.playlist_date_check, 10))) {
             getPlaylistInJSON(function () {
                 cb && cb();
             });
