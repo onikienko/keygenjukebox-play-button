@@ -4,4 +4,8 @@ It's all.
 This extension just streams music from keygenjukebox (collection of 8-bit chiptune).
 Music is absolutely free and legal. Visit keygenjukebox.com for details.
 
+Tip:
+Hold cursor on extension button when music stopped. You'll see Total Played statistic.
+This feature implemented in v1.1 so there is no info about played time before this update.
+
 Source code https://github.com/onikienko/keygenjukebox-play-button
