@@ -11,5 +11,25 @@
     "p_defaultTitle": {
         "message": "Клацни щоб почати відтворення",
         "description": "Default title on extension button (popup)"
+    },
+
+    "p_day": {
+        "message": "д",
+        "description": "Abbr for Day"
+    },
+
+    "p_hour": {
+        "message": "г",
+        "description": "Abbr for Hour"
+    },
+
+    "p_min": {
+        "message": "м",
+        "description": "Abbr for Minute"
+    },
+
+    "p_totalPlayed": {
+        "message": "Всього вiдiграно: ",
+        "description": ""
     }
 }

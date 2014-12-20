@@ -1,7 +1,8 @@
 (function () {
     var playlist = localStorage.playlist ? JSON.parse(localStorage.playlist) : [],
         is_playing = false,
-        audio = new Audio();
+        audio = new Audio(),
+        start_time = 0;
 
     function getPlaylistInJSON(cb) {
         var xhr = new XMLHttpRequest(),
@@ -39,12 +40,50 @@
         for (var j, x, i = playlist.length; i; j = Math.floor(Math.random() * i), x = playlist[--i], playlist[i] = playlist[j], playlist[j] = x);
     }
 
+    function storeStatistics() {
+        var stored_time = localStorage.total_played || 0,
+            played_this_session = start_time ? Date.now() - start_time : 0;
+
+        localStorage.total_played = parseInt(stored_time, 10) + played_this_session;
+        start_time = 0;
+    }
+
+    function showStopTitle () {
+        var title = chrome.i18n.getMessage('p_totalPlayed'),
+            stored_time = localStorage.total_played;
+
+        function convertMS(ms) {
+            var d, h, m, s;
+            s = Math.floor(ms / 1000);
+            m = Math.floor(s / 60);
+            s = s % 60;
+            h = Math.floor(m / 60);
+            m = m % 60;
+            d = Math.floor(h / 24);
+            h = h % 24;
+            return { d: d, h: h, m: m, s: s };
+        }
+
+        if (stored_time) {
+            stored_time = convertMS(parseInt(stored_time, 10));
+            title += stored_time.d ? stored_time.d + chrome.i18n.getMessage('p_day') : '';
+            title += stored_time.h ? ' ' + stored_time.h + chrome.i18n.getMessage('p_hour') : '';
+            title += stored_time.m ? ' ' + stored_time.m + chrome.i18n.getMessage('p_min') : '';
+
+        } else {
+            title = chrome.i18n.getMessage('p_defaultTitle');
+        }
+
+        chrome.browserAction.setTitle({title: title});
+    }
+
     chrome.browserAction.onClicked.addListener(function () {
         var track_no = 0;
 
         function play() {
             audio.src = playlist[track_no].location;
             audio.play();
+            start_time = Date.now();
             chrome.browserAction.setTitle({title: playlist[track_no].title});
         }
 
@@ -54,6 +93,7 @@
                 shufflePlaylist();
                 play();
                 audio.addEventListener('ended', function () {
+                    storeStatistics();
                     if (track_no < playlist.length) {
                         ++track_no;
                         play();
@@ -62,12 +102,14 @@
                 is_playing = true;
             })
         } else {
+            storeStatistics();
             chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
-            chrome.browserAction.setTitle({title: chrome.i18n.getMessage('p_defaultTitle')});
+            showStopTitle();
             audio.pause();
             is_playing = false;
         }
     });
 
+    showStopTitle();
     checkPlaylist();
 })();

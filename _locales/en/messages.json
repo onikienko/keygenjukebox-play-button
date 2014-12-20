@@ -11,5 +11,25 @@
     "p_defaultTitle": {
         "message": "Click to play keygenjukebox.com",
         "description": "Default title on extension button (popup)"
+    },
+
+    "p_day": {
+        "message": "d",
+        "description": "Abbr for Day"
+    },
+
+    "p_hour": {
+        "message": "h",
+        "description": "Abbr for Hour"
+    },
+
+    "p_min": {
+        "message": "m",
+        "description": "Abbr for Minute"
+    },
+
+    "p_totalPlayed": {
+        "message": "Total played: ",
+        "description": ""
     }
 }
