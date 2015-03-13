@@ -24,7 +24,7 @@
     },
 
     "p_min": {
-        "message": "м",
+        "message": "х",
         "description": "Abbr for Minute"
     },
 
