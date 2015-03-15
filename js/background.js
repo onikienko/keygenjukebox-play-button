@@ -67,9 +67,8 @@
         if (stored_time) {
             stored_time = convertMS(parseInt(stored_time, 10));
             title += stored_time.d ? stored_time.d + chrome.i18n.getMessage('p_day') : '';
-            title += stored_time.h ? ' ' + stored_time.h + chrome.i18n.getMessage('p_hour') : '';
-            title += stored_time.m ? ' ' + stored_time.m + chrome.i18n.getMessage('p_min') : '';
-
+            title += stored_time.h ? ' ' + stored_time.h + chrome.i18n.getMessage('p_hour') : ' 0' + chrome.i18n.getMessage('p_hour');
+            title += stored_time.m ? ' ' + stored_time.m + chrome.i18n.getMessage('p_min') : ' 0' + chrome.i18n.getMessage('p_min');
         } else {
             title = chrome.i18n.getMessage('p_defaultTitle');
         }
@@ -94,13 +93,11 @@
                 play();
                 audio.addEventListener('ended', function () {
                     storeStatistics();
-                    if (track_no < playlist.length) {
-                        ++track_no;
-                        play();
-                    }
+                    track_no = track_no < playlist.length ? track_no + 1 : 0;
+                    play();
                 });
                 is_playing = true;
-            })
+            });
         } else {
             storeStatistics();
             chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
