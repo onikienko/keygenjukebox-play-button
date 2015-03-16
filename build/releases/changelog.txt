@@ -1,3 +1,6 @@
+1.1.1 (16.03.2015 12:10)
+	Fix Ukrainian locale
+	Loop playlist 
 1.1 (20.12.2014 12:41)
 	Total played statistics on hover ext icon (when music stopped)
 1.0 (09.12.2014 23:07)
