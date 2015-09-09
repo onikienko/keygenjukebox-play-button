@@ -1,11 +1,12 @@
-Chromium (Chrome and Opera released) Extension for playing awesome chiptune from keygenjukebox.com
+Chromium (Chrome and Opera released) Extension for playing awesome chiptune from keygenmusic.tk
 --------------------------------------------------------------------------------------------------
 
-**Just click button to play chiptune from [keygenjukebox.com] (http://keygenjukebox.com/)**
+**Just click button to play chiptune from [keygenmusic.tk] (http://keygenmusic.tk/)**
+
+It plays mp3 version (not tracker) from mp3 mirror.
 
 
-Used [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building
-and [xspfy.com](http://xspfy.com/) for converting xspf playlist to JSON.
+Used [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
 
 - **[Chrome](https://chrome.google.com/webstore/detail/keygenjukebox-play-button/olephdnjkkjiidgifanfiimkbbcaogid)**
 - **[Opera](https://addons.opera.com/ru/extensions/details/keygenjukebox-play-button/)**

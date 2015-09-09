@@ -2,32 +2,29 @@
     var playlist = localStorage.playlist ? JSON.parse(localStorage.playlist) : [],
         is_playing = false,
         audio = new Audio(),
-        start_time = 0;
+        start_time = 0,
+        path_prefix = 'http://keygenmusic.tk/mp3/kgm/';
 
     function getPlaylistInJSON(cb) {
         var xhr = new XMLHttpRequest(),
-            playlist_url = 'http://keygenjukebox.com/playlist.xspf',
-            xspf;
+            playlist_url = 'http://keygenmusic.tk/mp3/kgm/playlist.txt';
 
-        xhr.open('GET', 'http://xspfy.com/json?url=' + playlist_url, true);
+        xhr.open('GET', playlist_url, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                xspf = JSON.parse(xhr.responseText);
-                if (xspf) {
-                    playlist = xspf.playlist.track;
-                    if (playlist && playlist.length > 1) {
-                        localStorage.playlist_date_check = Date.now();
-                        localStorage.playlist = JSON.stringify(playlist);
-                    }
-                    cb && cb();
+                playlist = JSON.parse(xhr.responseText);
+                if (playlist && playlist.length > 1) {
+                    localStorage.playlist_date_check = Date.now();
+                    localStorage.playlist = JSON.stringify(playlist);
                 }
+                cb && cb();
             }
         };
         xhr.send();
     }
 
     function checkPlaylist(cb) {
-        if (!localStorage.playlist || (Date.now() - 1000 * 60 * 60 * 24 * 7 > parseInt(localStorage.playlist_date_check, 10))) {
+        if (playlist.length === 0 || !playlist[0].st || (Date.now() - 1000 * 60 * 60 * 24 * 7 > parseInt(localStorage.playlist_date_check, 10))) {
             getPlaylistInJSON(function () {
                 cb && cb();
             });
@@ -48,7 +45,7 @@
         start_time = 0;
     }
 
-    function showStopTitle () {
+    function showStopTitle() {
         var title = chrome.i18n.getMessage('p_totalPlayed'),
             stored_time = localStorage.total_played;
 
@@ -61,7 +58,7 @@
             m = m % 60;
             d = Math.floor(h / 24);
             h = h % 24;
-            return { d: d, h: h, m: m, s: s };
+            return {d: d, h: h, m: m, s: s};
         }
 
         if (stored_time) {
@@ -80,10 +77,10 @@
         var track_no = 0;
 
         function play() {
-            audio.src = playlist[track_no].location;
+            audio.src = path_prefix + playlist[track_no].p;
             audio.play();
             start_time = Date.now();
-            chrome.browserAction.setTitle({title: playlist[track_no].title});
+            chrome.browserAction.setTitle({title: playlist[track_no].st});
         }
 
         if (!is_playing) {

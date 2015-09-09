@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "keygenjukebox play button",
+        "message": "keygen music play button",
         "description": "do not translate extension name"
     },
     "extDescr": {
@@ -9,7 +9,7 @@
     },
 
     "p_defaultTitle": {
-        "message": "Click to play keygenjukebox.com",
+        "message": "Click to play keygen music",
         "description": "Default title on extension button (popup)"
     },
 

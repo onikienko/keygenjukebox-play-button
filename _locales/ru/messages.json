@@ -1,10 +1,10 @@
 {
     "extName": {
-        "message": "keygenjukebox play button",
+        "message": "keygen music play button",
         "description": "do not translate extension name"
     },
     "extDescr": {
-        "message": "Просто кликни чтоб слушать 8-битный чиптюн с keygenjukebox.com",
+        "message": "Просто кликни чтоб слушать 8-битный чиптюн",
         "description": "extension description"
     },
 

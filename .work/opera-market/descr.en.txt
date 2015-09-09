@@ -1,8 +1,8 @@
 Click extension button to play awesome 8-bit chiptune music. Click again to stop.
 It's all.
 
-This extension just streams music from keygenjukebox (collection of 8-bit chiptune).
-Music is absolutely free and legal. Visit keygenjukebox.com for details.
+This extension just streams music from keygenmusic.tk (collection of 8-bit chiptune).
+Music is absolutely free and legal. Visit keygenmusic.tk for details.
 
 Tip:
 Hold cursor on extension button when music stopped. You'll see Total Played statistic.
