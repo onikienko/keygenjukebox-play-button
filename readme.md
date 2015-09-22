@@ -1,4 +1,4 @@
-Chromium (Chrome and Opera released) Extension for playing awesome chiptune from keygenmusic.tk
+Chromium (Chrome and Opera released) and FireFox Extension for playing awesome chiptune from keygenmusic.tk
 --------------------------------------------------------------------------------------------------
 
 **Just click button to play chiptune from [keygenmusic.tk] (http://keygenmusic.tk/)**
