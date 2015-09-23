@@ -1,4 +1,5 @@
 2.0 (09.09.2015 14:26)
+	move to keygenmusic.tk
 1.1.1 (16.03.2015 12:10)
 	Fix Ukrainian locale
 	Loop playlist 
