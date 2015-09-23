@@ -9,4 +9,5 @@ It plays mp3 version (not tracker) from mp3 mirror.
 Used [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
 
 - **[Chrome](https://chrome.google.com/webstore/detail/keygenjukebox-play-button/olephdnjkkjiidgifanfiimkbbcaogid)**
-- **[Opera](https://addons.opera.com/ru/extensions/details/keygenjukebox-play-button/)**
+- **[Opera](https://addons.opera.com/extensions/details/keygenjukebox-play-button/)**
+- **[FireFox](https://addons.mozilla.org/addon/keygen-music-play-button/)**
