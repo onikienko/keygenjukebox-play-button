@@ -5,5 +5,6 @@ This extension just streams music from keygenmusic.tk (collection of 8-bit chipt
 Music is absolutely free and legal. Visit keygenmusic.tk for details.
 
 Tip:
-Hold cursor on extension button when music stopped. You'll see Total Played statistic.
+- Double-click on extension button to play next track
+- Hold cursor on extension button when music stopped. You'll see Total Played statistic.
 This feature implemented in v1.1 so there is no info about played time before this update.

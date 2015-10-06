@@ -3,6 +3,9 @@
         is_playing = false,
         audio = new Audio(),
         start_time = 0,
+        track_no = 0,
+        dbl_click_timeout = 300,
+        sngl_click_pending,
         path_prefix = 'http://keygenmusic.tk/mp3/kgm/';
 
     function getPlaylistInJSON(cb) {
@@ -69,13 +72,11 @@
         } else {
             title = chrome.i18n.getMessage('p_defaultTitle');
         }
-
+        chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
         chrome.browserAction.setTitle({title: title});
     }
 
     chrome.browserAction.onClicked.addListener(function () {
-        var track_no = 0;
-
         function play() {
             audio.src = path_prefix + playlist[track_no].p;
             audio.play();
@@ -83,27 +84,54 @@
             chrome.browserAction.setTitle({title: playlist[track_no].st});
         }
 
-        if (!is_playing) {
+        function next() {
+            storeStatistics();
+            track_no = track_no < playlist.length ? track_no + 1 : 0;
+            play();
+        }
+
+        function start() {
             chrome.browserAction.setIcon({path: 'img/ext_icons/19.png'});
+            track_no = 0;
             checkPlaylist(function () {
                 shufflePlaylist();
                 play();
                 audio.addEventListener('ended', function () {
-                    storeStatistics();
-                    track_no = track_no < playlist.length ? track_no + 1 : 0;
-                    play();
+                    next();
                 });
                 is_playing = true;
             });
-        } else {
+        }
+
+        function stop() {
             storeStatistics();
-            chrome.browserAction.setIcon({path: 'img/ext_icons/19_stop.png'});
             showStopTitle();
             audio.pause();
             is_playing = false;
         }
+
+        function isDblClick() {
+            var now = parseInt(Date.now()),
+                is_dbl_click = false;
+
+            if (sessionStorage.click_time && now - parseInt(sessionStorage.click_time, 10) < dbl_click_timeout) {
+                is_dbl_click = true;
+            }
+            sessionStorage.click_time = now;
+            return is_dbl_click;
+        }
+
+        if (isDblClick()) {
+            clearTimeout(sngl_click_pending);
+            sngl_click_pending = null;
+            is_playing ? next() : start();
+        } else {
+            sngl_click_pending = setTimeout(function () {
+                sngl_click_pending = null;
+                is_playing ? stop() : start();
+            }, dbl_click_timeout);
+        }
     });
 
     showStopTitle();
-    checkPlaylist();
 })();
