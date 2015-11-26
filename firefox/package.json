@@ -2,7 +2,7 @@
   "title": "keygen music play button",
   "name": "keygen-music-play-button",
   "description": "Just click to play awesome 8-bit chiptune music.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "homepage": "http://onikienko.pp.ua/2015/keygenjukebox-play-button",
   "main": "index.js",
   "author": "Michael Onikienko",
