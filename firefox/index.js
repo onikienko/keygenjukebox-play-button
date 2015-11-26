@@ -1,12 +1,11 @@
 var buttons = require('sdk/ui/button/action');
 var ss = require("sdk/simple-storage");
-var window = require("sdk/window/utils").getMostRecentBrowserWindow();
 var Request = require("sdk/request").Request;
 var _ = require("sdk/l10n").get;
+var pageWorkers = require("sdk/page-worker");
 
 var playlist = ss.storage.playlist ? ss.storage.playlist : [];
 var is_playing = false;
-var audio = new window.Audio;
 var start_time = 0;
 var iconPlaying = {
     "16": "./img/ext_icons/16.png",
@@ -19,6 +18,12 @@ var iconStop = {
     "64": "./img/ext_icons/64_stop.png"
 };
 
+var worker = pageWorkers.Page({
+    contentURL: './blank.html',
+    contentScriptFile: './worker.js'
+});
+var track_no;
+
 var button = buttons.ActionButton({
     id: "keygen-music-play-button",
     label: _('defaultTitle'),
@@ -26,33 +31,35 @@ var button = buttons.ActionButton({
     onClick: handleClick
 });
 
-function handleClick() {
-    var track_no = 0;
+function play() {
+    start_time = Date.now();
+    button.label = playlist[track_no].st;
+    worker.port.emit('play', 'http://keygenmusic.tk/mp3/kgm/' + playlist[track_no].p);
+}
 
-    function play() {
-        audio.src = 'http://keygenmusic.tk/mp3/kgm/' + playlist[track_no].p;
-        audio.play();
-        start_time = Date.now();
-        button.label = playlist[track_no].st;
-    }
+// fires when page-worker send 'ended'
+// means that track is ended and there is need to start to play next track
+worker.port.on('ended', function() {
+    storeStatistics();
+    track_no = track_no < playlist.length ? track_no + 1 : 0;
+    play();
+});
+
+function handleClick() {
+    track_no = 0;
 
     if (!is_playing) {
         button.icon = iconPlaying;
         checkPlaylist(function () {
             shufflePlaylist();
             play();
-            audio.addEventListener('ended', function () {
-                storeStatistics();
-                track_no = track_no < playlist.length ? track_no + 1 : 0;
-                play();
-            });
             is_playing = true;
         });
     } else {
         storeStatistics();
         button.icon = iconStop;
         showStopTitle();
-        audio.pause();
+        worker.port.emit('stop');
         is_playing = false;
     }
 }
