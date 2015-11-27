@@ -1,6 +1,8 @@
 Chromium (Chrome and Opera released) and FireFox Extension for playing awesome chiptune from keygenmusic.tk
 --------------------------------------------------------------------------------------------------
 
+![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/chromium/img/ext_icons/128.png)
+
 **Just click button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
 
 It plays mp3 version (not tracker) from mp3 mirror.
