@@ -1,8 +1,9 @@
-var buttons = require('sdk/ui/button/action');
+var ui = require('sdk/ui');
 var ss = require("sdk/simple-storage");
 var Request = require("sdk/request").Request;
 var _ = require("sdk/l10n").get;
 var pageWorkers = require("sdk/page-worker");
+var { setTimeout, clearTimeout } = require("sdk/timers");
 
 var playlist = ss.storage.playlist ? ss.storage.playlist : [];
 var is_playing = false;
@@ -22,9 +23,11 @@ var worker = pageWorkers.Page({
     contentURL: './blank.html',
     contentScriptFile: './worker.js'
 });
-var track_no;
+var track_no = 0;
+var dbl_click_timeout = 300;
+var sngl_click_pending;
 
-var button = buttons.ActionButton({
+var button = ui.ActionButton({
     id: "keygen-music-play-button",
     label: _('defaultTitle'),
     icon: iconStop,
@@ -32,35 +35,60 @@ var button = buttons.ActionButton({
 });
 
 function play() {
-    start_time = Date.now();
+    button.icon = iconPlaying;
     button.label = playlist[track_no].st;
+    start_time = Date.now();
     worker.port.emit('play', 'http://keygenmusic.tk/mp3/kgm/' + playlist[track_no].p);
+    is_playing = true;
+}
+
+function stop() {
+    storeStatistics();
+    button.icon = iconStop;
+    showStopTitle();
+    worker.port.emit('stop');
+    is_playing = false;
+}
+
+function start() {
+    track_no = 0;
+    checkPlaylist(function () {
+        shufflePlaylist();
+        play();
+    });
+}
+
+function next() {
+    storeStatistics();
+    track_no = track_no < playlist.length ? track_no + 1 : 0;
+    play();
 }
 
 // fires when page-worker send 'ended'
 // means that track is ended and there is need to start to play next track
-worker.port.on('ended', function() {
-    storeStatistics();
-    track_no = track_no < playlist.length ? track_no + 1 : 0;
-    play();
-});
+worker.port.on('ended', next);
 
 function handleClick() {
-    track_no = 0;
+    function isDblClick() {
+        var now = parseInt(Date.now()),
+            is_dbl_click = false;
 
-    if (!is_playing) {
-        button.icon = iconPlaying;
-        checkPlaylist(function () {
-            shufflePlaylist();
-            play();
-            is_playing = true;
-        });
+        if (ss.storage.click_time && now - parseInt(ss.storage.click_time, 10) < dbl_click_timeout) {
+            is_dbl_click = true;
+        }
+        ss.storage.click_time = now;
+        return is_dbl_click;
+    }
+
+    if (isDblClick()) {
+        clearTimeout(sngl_click_pending);
+        sngl_click_pending = null;
+        is_playing ? next() : start();
     } else {
-        storeStatistics();
-        button.icon = iconStop;
-        showStopTitle();
-        worker.port.emit('stop');
-        is_playing = false;
+        sngl_click_pending = setTimeout(function () {
+            sngl_click_pending = null;
+            is_playing ? stop() : start();
+        }, dbl_click_timeout);
     }
 }
 
