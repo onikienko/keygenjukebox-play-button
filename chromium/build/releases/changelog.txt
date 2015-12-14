@@ -1,3 +1,4 @@
+2.1.1 (14.12.2015 09:26)
 	Next song on double-click on icon
 	Check playlist only on icon click
 2.0 (09.09.2015 14:26)
