@@ -20,7 +20,7 @@ Install for your browser:
 
 The idea of extension is simplicity. One button UI.  
 Click on the icon to start. Click again to stop.  
-Each time you click the icon extension is shuffling playlist.  
+Each time you click the icon, extension is shuffling playlist.  
 It is like radio. You never know next track.  
 At the moment, there are more than 6 days of non-stop playing :scream:  
 
