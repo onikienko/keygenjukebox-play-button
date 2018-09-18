@@ -28,4 +28,4 @@ At the moment, there are more than 6 days of non-stop playing :scream:
 
 **Tips:**  
 - Double click on extension icon for next track.
-- Hower on extension icon to see Total played statistics (when stopped)
+- Hover over extension icon to see Total played statistics (when stopped). When playing you will see track title.
