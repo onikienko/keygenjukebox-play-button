@@ -29,3 +29,12 @@ At the moment, there are more than 6 days of non-stop playing :scream:
 **Tips:**  
 - Double click on extension icon for next track.
 - Hover over extension icon to see Total played statistics (when stopped). When playing you will see track title.
+
+------------------------------------------------------------------------------------------------
+
+**Firefox versions dev. notes**
+
+In the `firefox` folder located obsolete extension. Version implemented with webExtensions API is located under the `firefox-webExtensions` folder.
+
+In fact, this `firefox-webExtensions` is slightly modified `chromium` version (only `manifest.json` is different). 
+I plan to create new builder which will build Chrome, Opera and Firefox version from one source.
