@@ -1,0 +1,35 @@
+{
+    "extName": {
+        "message": "keygen music play button",
+        "description": "do not translate extension name"
+    },
+    "extDescr": {
+        "message": "Просто клацни щоб слухати 8-бітний чіптюн",
+        "description": "extension description"
+    },
+
+    "p_defaultTitle": {
+        "message": "Клацни щоб почати відтворення",
+        "description": "Default title on extension button (popup)"
+    },
+
+    "p_day": {
+        "message": "д",
+        "description": "Abbr for Day"
+    },
+
+    "p_hour": {
+        "message": "г",
+        "description": "Abbr for Hour"
+    },
+
+    "p_min": {
+        "message": "х",
+        "description": "Abbr for Minute"
+    },
+
+    "p_totalPlayed": {
+        "message": "Всього вiдiграно: ",
+        "description": ""
+    }
+}
