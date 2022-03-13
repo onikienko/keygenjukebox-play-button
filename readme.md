@@ -1,6 +1,8 @@
 Chromium (Chrome, Opera published) and FireFox Extension for playing awesome chiptune from keygenmusic.tk
 --------------------------------------------------------------------------------------------------
 
+### Russian invaders must die. Glory to Ukraine.
+
 ![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/chromium/img/ext_icons/128.png)
 
 **Just click button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
