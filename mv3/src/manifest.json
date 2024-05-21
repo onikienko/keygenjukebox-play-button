@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "117",
+  "name": "keygen music play button",
+  "description": "Extension for playing awesome chiptune from keygenmusic.tk",
+  "version": "0.0.0",
+  "default_locale": "en",
+  "icons": {
+    "16": "images/16.png",
+    "48": "images/128.png?width=48",
+    "128": "images/128.png"
+  },
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/16.png"
+    }
+  },
+  "host_permissions": [
+    "*://keygenmusic.tk/*"
+  ],
+  "permissions": [
+    "alarms",
+    "offscreen",
+    "storage"
+  ]
+}

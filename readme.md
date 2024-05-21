@@ -1,16 +1,13 @@
 Chromium (Chrome, Opera published) and FireFox Extension for playing awesome chiptune from keygenmusic.tk
 --------------------------------------------------------------------------------------------------
 
-### Russian invaders must die. Glory to Ukraine.
-
 ![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/chromium/img/ext_icons/128.png)
 
-**Just click button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
+**Just click the button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
 
 It plays mp3 version (not tracker) from mp3 mirror.
 
-
-Used [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
+It uses [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
 
 Install for your browser:
 
@@ -22,21 +19,28 @@ Install for your browser:
 
 The idea of extension is simplicity. One button UI.  
 Click on the icon to start. Click again to stop.  
-Each time you click the icon, extension is shuffling playlist.  
+Each time you click the icon, an extension is shuffling playlist.  
 It is like a radio. You never know the next track.  
 At the moment, there are more than 6 days of non-stop playing :scream:  
 
 -----------------------------------------------------------------------------------------------
 
 **Tips:**  
-- Double click on extension icon for next track.
-- Hover over extension icon to see Total played statistics (when stopped). When playing you will see track title.
+
+- Double-click on the extension icon for next track.
+- Hover over extension icon to see Total played statistics (when stopped). When playing, you will see track title.
 
 ------------------------------------------------------------------------------------------------
 
+**Manifest V3**
+
+In the `mv3` folder located modern manifest v3 implementation. It's still work in progress.
+
 **Firefox versions dev. notes**
 
-In the `firefox` folder located obsolete extension. Version implemented with webExtensions API is located under the `firefox-webExtensions` folder.
+In the `firefox` folder located an obsolete extension. Version implemented with webExtensions API is located under
+the `firefox-webExtensions` folder.
 
-In fact, this `firefox-webExtensions` is slightly modified `chromium` version (only `manifest.json` is different). 
-I plan to create new builder which will build Chrome, Opera and Firefox version from one source.
+In fact, this `firefox-webExtensions` is slightly modified `chromium` version (only `manifest.json` is different).
+
+### Glory to Ukraine
