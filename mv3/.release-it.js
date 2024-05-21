@@ -8,7 +8,7 @@ module.exports = {
     },
     'github': {
         'release': true,
-        'releaseName': 'v${version}',
+        'releaseName': 'v${version}--chrome-mv3',
         'tokenRef': 'GITHUB_TOKEN',
         'assets': ['releases/*-v${version}.zip'],
     },
