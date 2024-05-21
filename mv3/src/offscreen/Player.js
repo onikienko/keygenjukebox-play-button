@@ -76,5 +76,8 @@ export class Player extends EventTarget {
                 this.play();
             }
         });
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.setActionHandler('nexttrack', () => this.next());
+        }
     }
 }
