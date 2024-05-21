@@ -1,13 +1,15 @@
-Chromium (Chrome, Opera published) and FireFox Extension for playing awesome chiptune from keygenmusic.tk
---------------------------------------------------------------------------------------------------
+Chrome, Opera and FireFox Extension for playing awesome chiptune from keygenmusic.tk
+------------------------------------------------------------------------------------
 
 ![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/chromium/img/ext_icons/128.png)
+![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/mv3/src/images/128.png)
 
 **Just click the button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
 
 It plays mp3 version (not tracker) from mp3 mirror.
 
-It uses [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building.
+It uses [Chrome Extension Box](https://github.com/onikienko/chrome-extensions-box) for Chrome release building (manifest
+v2) and [mv3-parcel-webext-template](https://github.com/onikienko/mv3-parcel-webext-template) for manifest v3.
 
 Install for your browser:
 
@@ -42,5 +44,7 @@ In the `firefox` folder located an obsolete extension. Version implemented with 
 the `firefox-webExtensions` folder.
 
 In fact, this `firefox-webExtensions` is slightly modified `chromium` version (only `manifest.json` is different).
+
+------------------------------------------------------
 
 ### Glory to Ukraine
