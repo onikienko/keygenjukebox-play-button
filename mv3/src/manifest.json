@@ -6,8 +6,6 @@
   "version": "0.0.0",
   "default_locale": "en",
   "icons": {
-    "16": "images/16.png",
-    "48": "images/128.png?width=48",
     "128": "images/128.png"
   },
   "background": {
@@ -16,7 +14,7 @@
   },
   "action": {
     "default_icon": {
-      "16": "images/16.png"
+      "128": "images/128.png"
     }
   },
   "permissions": [
