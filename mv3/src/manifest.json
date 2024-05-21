@@ -19,9 +19,6 @@
       "16": "images/16.png"
     }
   },
-  "host_permissions": [
-    "*://keygenmusic.tk/*"
-  ],
   "permissions": [
     "alarms",
     "offscreen",
