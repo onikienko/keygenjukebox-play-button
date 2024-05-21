@@ -41,8 +41,8 @@ chrome.action.onClicked.addListener(async () => {
 chrome.runtime.onMessage.addListener(async (message) => {
     switch (message.cmd) {
         case MSG_CMD.PLAY:
-            await chrome.action.setBadgeTextColor({color: 'white'});
-            await chrome.action.setBadgeBackgroundColor({color: 'red'});
+            await chrome.action.setBadgeTextColor({color: '#e94545'});
+            await chrome.action.setBadgeBackgroundColor({color: '#A9B7C6'});
             await chrome.action.setBadgeText({text: ' \u25B6'});
             await chrome.action.setTitle({
                 title: chrome.i18n.getMessage('p_nowPlaying') + '\n' + message.data.info,
