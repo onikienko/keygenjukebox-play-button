@@ -2,7 +2,6 @@ Chrome, Opera and FireFox Extension for playing awesome chiptune from keygenmusi
 ------------------------------------------------------------------------------------
 
 ![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/chromium/img/ext_icons/128.png)
-![](https://raw.githubusercontent.com/onikienko/keygenjukebox-play-button/master/mv3/src/images/128.png)
 
 **Just click the button to play chiptune from [keygenmusic.tk](http://keygenmusic.tk/)**
 
