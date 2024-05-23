@@ -61,6 +61,14 @@ export class Player extends EventTarget {
         this.play();
     }
 
+    prev() {
+        this.#curPlaylistPos--;
+        if (this.#curPlaylistPos < 0) {
+            this.#curPlaylistPos = this.#playlist.length - 1;
+        }
+        this.play();
+    }
+
     #initPlaylist() {
         this.#playlist = shuffleArray(this.#playlist);
         this.#curPlaylistPos = 0;
@@ -87,6 +95,7 @@ export class Player extends EventTarget {
         });
         if ('mediaSession' in navigator) {
             navigator.mediaSession.setActionHandler('nexttrack', () => this.next());
+            navigator.mediaSession.setActionHandler('previoustrack', () => this.prev());
             navigator.mediaSession.setActionHandler('stop', () => this.stop());
         }
     }
