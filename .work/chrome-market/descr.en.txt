@@ -12,5 +12,6 @@ At the moment, there are more than 6 days of non-stop music 😱
 
 Tip:
 - Hover cursor over the extension button when music stopped. You'll see Total Played statistic.
+- Use Media Keys on your keyboard to control playing (pause, prev, next)
 
 Source code https://github.com/onikienko/keygenjukebox-play-button
