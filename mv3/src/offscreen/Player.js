@@ -87,6 +87,7 @@ export class Player extends EventTarget {
         });
         if ('mediaSession' in navigator) {
             navigator.mediaSession.setActionHandler('nexttrack', () => this.next());
+            navigator.mediaSession.setActionHandler('stop', () => this.stop());
         }
     }
 
