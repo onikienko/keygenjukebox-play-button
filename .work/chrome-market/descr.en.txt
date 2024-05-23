@@ -1,12 +1,16 @@
-Click extension button to play awesome 8-bit chiptune music. Click again to stop.
-It's all.
+Click the extension button to play awesome 8-bit chiptune music. Click again to stop.
+That's it.
 
 This extension just streams music from keygenmusic.tk (collection of chiptune music from keygens).
 Music is absolutely free and legal. Visit keygenmusic.tk for details.
 
+The idea of the extension is simplicity. One button UI.
+Click on the icon to start. Click again to stop.
+Each time you click the icon, an extension is shuffling playlist.
+It is like a radio. You never know the next track.
+At the moment, there are more than 6 days of non-stop music 😱
+
 Tip:
-- Double-click on extension icon to play next track
-- Hold cursor on extension button when music stopped. You'll see Total Played statistic.
-This feature implemented in v1.1 so there is no info about played time before this update.
+- Hover cursor over the extension button when music stopped. You'll see Total Played statistic.
 
 Source code https://github.com/onikienko/keygenjukebox-play-button
