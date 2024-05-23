@@ -68,13 +68,6 @@ chrome.runtime.onMessage.addListener(async (message) => {
     }
 });
 
-self.addEventListener('install', (e) => {
-    console.log('sw install', e);
-});
-
-self.addEventListener('activate', (e) => {
-    console.log('sw activate', e);
-});
 // to avoid updating badge every time when sw wake up (possible during playing)
 const updateBadgeOnStartup = async () => {
     const storage = await chrome.storage.session.get('flag');
