@@ -1,3 +1,4 @@
+import {KGM_MIRRORS} from '../consts';
 import {shuffleArray} from '../utils/utils';
 
 
@@ -7,7 +8,6 @@ export class Player extends EventTarget {
     #playlist;
     #curPlaylistPos;
     #startTime = 0;
-    #basePathMirrors = ['https://kgm.cmd.pp.ua/kgm/mp3/kgm/', 'https://keygenmusic.tk/mp3/kgm/'];
     #curBasePathIndex = 0;
 
     constructor(playlist) {
@@ -20,7 +20,7 @@ export class Player extends EventTarget {
 
     async play() {
         const playlistElement = this.#playlist[this.#curPlaylistPos];
-        this.#audio.src = this.#basePathMirrors[this.#curBasePathIndex] + playlistElement.p;
+        this.#audio.src = KGM_MIRRORS[this.#curBasePathIndex] + playlistElement.p;
         try {
             await this.#audio.play();
             this.isPlaying = true;
@@ -68,7 +68,7 @@ export class Player extends EventTarget {
         });
         this.#audio.addEventListener('error', (e) => {
             // try to play from another mirror
-            if (this.#curBasePathIndex >= this.#basePathMirrors.length - 1) {
+            if (this.#curBasePathIndex >= KGM_MIRRORS.length - 1) {
                 this.#startTime = 0;
                 this.stop();
             } else {

@@ -33,9 +33,13 @@ chrome.alarms.onAlarm.addListener(alarm => {
 });
 
 chrome.action.onClicked.addListener(async () => {
-    await setupOffscreenDocument('offscreen/offscreen.html');
-    const playlist = await getPlaylist();
-    await chrome.runtime.sendMessage({play: {playlist}});
+    try {
+        const playlist = await getPlaylist();
+        await setupOffscreenDocument('offscreen/offscreen.html');
+        await chrome.runtime.sendMessage({play: {playlist}});
+    } catch (err) {
+        console.log('Error during getting playlist', err);
+    }
 });
 
 chrome.runtime.onMessage.addListener(async (message) => {

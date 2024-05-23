@@ -1,11 +1,21 @@
+import {KGM_MIRRORS} from '../consts';
+
+
 export const fetchAndUpdateList = async () => {
-    return fetch('https://keygenmusic.tk/mp3/kgm/playlist.txt')
-        .then(resp => resp.json())
-        .then(list => {
+    let mirrorIndex = 0;
+    // trying to get playlist from mirrors if some servers down
+    while (mirrorIndex < KGM_MIRRORS.length) {
+        try {
+            const resp = await fetch(KGM_MIRRORS[mirrorIndex] + 'playlist.txt');
+            const list = await resp.json();
             if (!list?.length) throw new Error('Invalid list');
-            chrome.storage.local.set({list});
+            await chrome.storage.local.set({list});
             return list;
-        });
+        } catch (e) {
+            mirrorIndex++;
+        }
+    }
+    throw new Error('Unable to get playlist');
 };
 
 export const getPlaylist = async () => {
