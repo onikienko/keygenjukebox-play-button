@@ -1,4 +1,5 @@
 import {KGM_MIRRORS} from '../consts';
+import logo128 from '../images/128.png';
 import {shuffleArray} from '../utils/utils';
 
 
@@ -9,6 +10,7 @@ export class Player extends EventTarget {
     #curPlaylistPos;
     #startTime = 0;
     #curBasePathIndex = 0;
+    #artworkSrc128;
 
     constructor(playlist) {
         super();
@@ -16,6 +18,7 @@ export class Player extends EventTarget {
         this.#initPlaylist();
         this.#audio = new Audio();
         this.#listenAudioEvents();
+        this.#initArtwork();
     }
 
     async play() {
@@ -32,6 +35,7 @@ export class Player extends EventTarget {
                 },
             }));
             this.#startTime = now;
+            this.#setMetadata(playlistElement.st);
         } catch (e) {
             console.log('Error playing', e);
         }
@@ -62,6 +66,11 @@ export class Player extends EventTarget {
         this.#curPlaylistPos = 0;
     }
 
+    async #initArtwork() {
+        const blob = await (await fetch(logo128)).blob();
+        this.#artworkSrc128 = URL.createObjectURL(blob);
+    }
+
     #listenAudioEvents() {
         this.#audio.addEventListener('ended', () => {
             this.next();
@@ -78,6 +87,18 @@ export class Player extends EventTarget {
         });
         if ('mediaSession' in navigator) {
             navigator.mediaSession.setActionHandler('nexttrack', () => this.next());
+        }
+    }
+
+    async #setMetadata(info) {
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: info,
+                artwork: [
+                    // add also 96, 192, 256, 384 and 512
+                    {src: this.#artworkSrc128, sizes: '128x128', type: 'image/png'},
+                ],
+            });
         }
     }
 }
