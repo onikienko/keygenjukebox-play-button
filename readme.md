@@ -35,7 +35,7 @@ At the moment, there are more than 6 days of non-stop playing :scream:
 
 **Manifest V3**
 
-In the `mv3` folder located modern manifest v3 implementation. It's still work in progress.
+In the `mv3` folder located modern manifest v3 implementation.
 
 **Firefox versions dev. notes**
 
