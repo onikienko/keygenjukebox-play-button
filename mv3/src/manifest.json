@@ -3,7 +3,7 @@
   "description": "__MSG_extDescr__",
   "manifest_version": 3,
   "minimum_chrome_version": "117",
-  "version": "0.0.0",
+  "version": "4.0.0",
   "default_locale": "en",
   "icons": {
     "16": "images/16.png",
