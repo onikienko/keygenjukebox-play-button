@@ -4,8 +4,8 @@ import {shuffleArray} from '../utils/utils';
 
 
 export class Player extends EventTarget {
-    #audio;
     isPlaying = false;
+    #audio;
     #playlist;
     #curPlaylistPos;
     #startTime = 0;
@@ -76,7 +76,7 @@ export class Player extends EventTarget {
         this.#audio.addEventListener('ended', () => {
             this.next();
         });
-        this.#audio.addEventListener('error', (e) => {
+        this.#audio.addEventListener('error', () => {
             // try to play from another mirror
             if (this.#curBasePathIndex >= KGM_MIRRORS.length - 1) {
                 this.#startTime = 0;
