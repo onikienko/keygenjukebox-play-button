@@ -93,7 +93,7 @@ export class Player extends EventTarget {
         }
     }
 
-    async #setMetadata(info) {
+    #setMetadata(info) {
         if ('mediaSession' in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: info,
