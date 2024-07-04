@@ -10,6 +10,8 @@ module.exports = {
         'release': true,
         'releaseName': 'v${version}--chrome-mv3',
         'tokenRef': 'GITHUB_TOKEN',
+        'autoGenerate': true,
+        'web': true,
         'assets': ['releases/*-v${version}.zip'],
     },
     'npm': {
@@ -21,7 +23,6 @@ module.exports = {
         'after:bump': ['npm run build'],
         'after:release': [
             'echo Successfully released ${name} v${version} to ${repo.repository}',
-            'opener https://${repo.host}/${repo.repository}/releases/tag/v${version}',
         ],
     },
 };
