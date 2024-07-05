@@ -20,7 +20,21 @@ export class Player extends EventTarget {
 
     async play() {
         const playlistElement = this.#playlist[this.#curPlaylistPos];
-        this.#audio.src = this.#mirrors[this.#curMirrorIndex] + playlistElement.p;
+        const trackUrl = this.#mirrors[this.#curMirrorIndex] + playlistElement.p;
+
+        try {
+            // check if mirror response. if no, dispatch an error event to try next mirror
+            // without this will have to wait until timeout error will be fired by play function. it could take too long
+            await fetch(trackUrl, {
+                method: 'HEAD',
+                signal: AbortSignal.timeout(3000),
+            });
+        } catch (e) {
+            this.#audio.dispatchEvent(new Event('error'));
+            return;
+        }
+
+        this.#audio.src = trackUrl;
         try {
             await this.#audio.play();
             this.isPlaying = true;
