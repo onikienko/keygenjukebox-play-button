@@ -33,17 +33,8 @@ This code is ready for uploading to the Chrome Web Store.
 
 ## Release:
 
-The template uses [release-it](https://github.com/release-it/release-it) for release on GitHub.
+`npm run release`
 
-1. Generate `personal access token` in GitHub. Go to
-   [Github->Settings->DeveloperSettings->PersonalAccessTokens](https://github.com/settings/tokens/new?scopes=repo&description=release-it).
-   Only `repo` scope is required.
-2. Rename the already existing `.env.example` file to `.env` and put the generated `personal access token` there. It
-   will look
-   like:
-    ```
-    GITHUB_TOKEN="your generated token"
-    ```
-3. Run `npm run release`. Under the hood, it will run `npm run build` steps, and make version bump (in
-   both `package.json`
-   and `manifest.json`), commit, push, and make a GitHub release with the generated `zip` file attached.
+[release-it](https://github.com/release-it/release-it) is used for GitHub release.
+
+It will bump the version (`package.json` and `manifest.json`), make the `build`, and prepare a release draft with the extension `zip` on GitHub.
