@@ -1,6 +1,6 @@
 {
   "name": "keygen-music-play-button",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Extension for playing awesome chiptune from keygenmusic.tk",
   "scripts": {
     "start": "parcel watch src/manifest.json src/offscreen/offscreen.html --host localhost",
