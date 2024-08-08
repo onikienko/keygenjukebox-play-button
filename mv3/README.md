@@ -8,7 +8,7 @@ and [release-it](https://github.com/release-it/release-it) for GitHub releases.
 
 ## Development:
 
-1. Check if your [Node.js](https://nodejs.org/) version is >= **18**.
+1. Check if your [Node.js](https://nodejs.org/) version is >= **20**.
 2. Run `npm install` to install the dependencies.
 3. Run `npm start`
 4. Load your extension on Chrome following:
