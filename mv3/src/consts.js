@@ -12,6 +12,6 @@ export const STORAGE_NAME = {
 export const KGM_MIRRORS = [
     'https://console.pp.ua/kgm/mp3/kgm/',
     'https://kgm-mirror.cmd.pp.ua/mp3/',
-    'https://keygenmusic.tk/mp3/kgm/',
     'https://kgm.cmd.pp.ua/kgm/mp3/kgm/',
+    'https://keygenmusic.tk/mp3/kgm/',
 ];
